@@ -23,7 +23,7 @@ namespace Data
                 UserName = "luismitoto@gmail.com",
                 IsActive = true,
                 Phone = "+543323333",
-                State = Enums.UserStates.Enabled
+                State = Common.Enums.UserStates.Enabled
             };
 
             modelBuilder.Entity<User>().HasData(

@@ -19,8 +19,10 @@ namespace GarageApp
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddSingleton<UserRepository>();
-            builder.Services.AddSingleton<UserService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<IGarageRepository, GarageRepository>();
+            builder.Services.AddScoped<IGarageService, GarageService>();
 
             builder.Services.AddDbContext<GarageContext>(dbContextOptions => dbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:GarageAPIDBConnectionString"]));
 
