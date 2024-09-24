@@ -14,7 +14,7 @@ namespace Data.Entities
         public string UserName { get; set; } // Es el mail
         public string Password { get; set; }
         public string Phone { get; set; }
-        public States State { get; set; }
+        public UserStates State { get; set; }
         public bool IsActive { get; set; }
     }
 }

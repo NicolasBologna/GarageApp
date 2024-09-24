@@ -1,5 +1,7 @@
 
+using Data;
 using Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Services;
 
 namespace GarageApp
@@ -19,6 +21,8 @@ namespace GarageApp
 
             builder.Services.AddSingleton<UserRepository>();
             builder.Services.AddSingleton<UserService>();
+
+            builder.Services.AddDbContext<GarageContext>(dbContextOptions => dbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:GarageAPIDBConnectionString"]));
 
             var app = builder.Build();
 

@@ -20,7 +20,7 @@ namespace Data.Repositories
                 IsActive = true,
                 UserName = "asdasd@gmail.com",
                 Phone = "1234567890",
-                State = States.DrinkingMate
+                State = UserStates.DrinkingMate
             };
             Users.Add(user1);
 

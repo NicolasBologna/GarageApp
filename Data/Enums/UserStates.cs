@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Enums
 {
-    public enum States
+    public enum UserStates
     {
         Enabled,
         OnVacation,
