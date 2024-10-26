@@ -1,10 +1,10 @@
-﻿using Common.DTOs;
+﻿using Common.DTOs.English;
 using Data.Entities;
-using Data.Repositories;
+using Data.Repositories.Interfaces;
 
 namespace Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
 
@@ -15,6 +15,27 @@ namespace Services
         public User ValidateUser(LoginReqDto loginData)
         {
             return _userRepository.ValidateUser(loginData.UserName, loginData.Password);
+        }
+
+        public ENUserDetailsDto GetUserByUserName(string userName)
+        {
+            User? dbUser = _userRepository.GetUserByUserName(userName);
+
+            if (dbUser is null)
+            {
+                throw new Exception("User not found");
+            }
+
+            ENUserDetailsDto userDetails = new ENUserDetailsDto();
+            userDetails.UserName = dbUser.UserName;
+            userDetails.Name = dbUser.Name;
+            userDetails.Phone = dbUser.Phone;
+            userDetails.Role = dbUser.Role;
+            userDetails.State = dbUser.State;
+            userDetails.IsActive = dbUser.IsActive;
+            userDetails.IsAdmin = dbUser.Role == Common.Enums.UserRoles.Admin;
+
+            return userDetails;
         }
     }
 }

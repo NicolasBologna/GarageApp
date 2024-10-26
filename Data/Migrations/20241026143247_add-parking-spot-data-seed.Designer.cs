@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(GarageContext))]
-    partial class GarageContextModelSnapshot : ModelSnapshot
+    [Migration("20241026143247_add-parking-spot-data-seed")]
+    partial class addparkingspotdataseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -35,9 +38,11 @@ namespace Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ExitTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ExitUserId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool?>("IsDeleted")
@@ -79,24 +84,6 @@ namespace Data.Migrations
                             ExitUserId = "1",
                             IsDeleted = false,
                             LicensePlate = "DEF456",
-                            ParkingSpotId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EntryTime = "2024-10-01T09:00:00",
-                            EntryUserId = "1",
-                            IsDeleted = false,
-                            LicensePlate = "GHY456",
-                            ParkingSpotId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EntryTime = "2022-11-01T09:00:00",
-                            EntryUserId = "1",
-                            IsDeleted = false,
-                            LicensePlate = "AGR405",
                             ParkingSpotId = 2
                         });
                 });

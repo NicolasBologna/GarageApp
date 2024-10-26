@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Common.DTOs
+namespace Common.DTOs.English
 {
     public class LoginReqDto
     {

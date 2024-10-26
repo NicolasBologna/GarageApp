@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(GarageContext))]
-    partial class GarageContextModelSnapshot : ModelSnapshot
+    [Migration("20241026142836_add-parking-spot")]
+    partial class addparkingspot
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -35,9 +38,11 @@ namespace Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ExitTime")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ExitUserId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool?>("IsDeleted")
@@ -55,50 +60,6 @@ namespace Data.Migrations
                     b.HasIndex("ParkingSpotId");
 
                     b.ToTable("Parkings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Cost = 20.0,
-                            EntryTime = "2023-10-01T08:00:00",
-                            EntryUserId = "1",
-                            ExitTime = "2023-10-01T10:00:00",
-                            ExitUserId = "1",
-                            IsDeleted = false,
-                            LicensePlate = "ABC123",
-                            ParkingSpotId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Cost = 20.0,
-                            EntryTime = "2023-10-01T09:00:00",
-                            EntryUserId = "1",
-                            ExitTime = "2023-10-01T11:00:00",
-                            ExitUserId = "1",
-                            IsDeleted = false,
-                            LicensePlate = "DEF456",
-                            ParkingSpotId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EntryTime = "2024-10-01T09:00:00",
-                            EntryUserId = "1",
-                            IsDeleted = false,
-                            LicensePlate = "GHY456",
-                            ParkingSpotId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EntryTime = "2022-11-01T09:00:00",
-                            EntryUserId = "1",
-                            IsDeleted = false,
-                            LicensePlate = "AGR405",
-                            ParkingSpotId = 2
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.ParkingSpot", b =>
@@ -120,36 +81,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ParkingSpots");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Deleted = 0,
-                            Description = "1A",
-                            Disabled = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Deleted = 0,
-                            Description = "1B",
-                            Disabled = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Deleted = 0,
-                            Description = "1C",
-                            Disabled = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Deleted = 0,
-                            Description = "2A",
-                            Disabled = 0
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.User", b =>

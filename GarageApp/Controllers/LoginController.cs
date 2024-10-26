@@ -1,6 +1,4 @@
-﻿using Common.DTOs;
-using Data.Entities;
-using Microsoft.AspNetCore.Http;
+﻿using Common.DTOs.English;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Services;
@@ -14,10 +12,10 @@ namespace GarageApp.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
         private readonly IConfiguration _config;
 
-        public LoginController(UserService userService, IConfiguration config)
+        public LoginController(IUserService userService, IConfiguration config)
         {
             _userService = userService;
             _config = config;

@@ -1,6 +1,8 @@
 
 using Data;
+using Data.Entities;
 using Data.Repositories;
+using Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -43,9 +45,13 @@ namespace GarageApp
             });
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<UserService>();
-            builder.Services.AddScoped<IGarageRepository, GarageRepository>();
-            builder.Services.AddScoped<IGarageService, GarageService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IParkingSpotRepository, ParkingSpotRepository>();
+            builder.Services.AddScoped<IParkingSpotService, ParkingSpotService>();
+            builder.Services.AddScoped<IRateService, RateService>();
+            builder.Services.AddScoped<IRateRepository, RateRepository>();
+            builder.Services.AddScoped<IParkingRepository, ParkingRepository>();
+            builder.Services.AddScoped<IParkingService, ParkingService>();
 
             builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticación que tenemos que elegir después en PostMan para pasarle el token
                 .AddJwtBearer(options => //Acá definimos la configuración de la autenticación. le decimos qué cosas queremos comprobar. La fecha de expiración se valida por defecto.
