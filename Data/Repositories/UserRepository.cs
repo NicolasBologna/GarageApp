@@ -15,9 +15,9 @@ namespace Data.Repositories
         {
             _context = context;
         }
-        public bool ValidateUser(string username, string password)
+        public User? ValidateUser(string username, string password)
         {
-            return _context.Users.Any(u => u.IsActive == true && u.UserName == username && u.Password == password);
+            return _context.Users.FirstOrDefault(u => u.IsActive == true && u.UserName == username && u.Password == password);
             //además de checkear el username y el password me fijo que sea active
 
         }

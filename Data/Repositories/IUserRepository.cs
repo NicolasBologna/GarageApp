@@ -4,6 +4,6 @@ namespace Data.Repositories
 {
     public interface IUserRepository
     {
-        bool ValidateUser(string username, string password);
+        User ValidateUser(string username, string password);
     }
 }

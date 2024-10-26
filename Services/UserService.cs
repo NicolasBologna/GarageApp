@@ -1,4 +1,5 @@
 ﻿using Common.DTOs;
+using Data.Entities;
 using Data.Repositories;
 
 namespace Services
@@ -11,7 +12,7 @@ namespace Services
         {
             _userRepository = userRepository;
         }
-        public bool ValidateUser(LoginDto loginData)
+        public User ValidateUser(LoginReqDto loginData)
         {
             return _userRepository.ValidateUser(loginData.UserName, loginData.Password);
         }
