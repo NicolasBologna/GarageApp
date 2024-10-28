@@ -7,8 +7,8 @@ namespace Data.Entities
     {
         public int Id { get; set; }
         public string LicensePlate { get; set; }
-        public string EntryTime { get; set; }
-        public string? ExitTime { get; set; }
+        public DateTime EntryTime { get; set; }
+        public DateTime? ExitTime { get; set; }
         public double? Cost { get; set; }
         public string EntryUserId { get; set; }
         public string? ExitUserId { get; set; }

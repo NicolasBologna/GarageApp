@@ -6,5 +6,6 @@ namespace Services
     {
         IEnumerable<ESPParkingDto> GetActives();
         IEnumerable<ESPParkingDto> GetAll();
+        int StartParking(ESPOpenParkingDto dto);
     }
 }

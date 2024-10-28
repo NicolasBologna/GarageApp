@@ -32,10 +32,16 @@ namespace Data.Repositories
             return _context.Parkings.Include(p => p.ParkingSpot).FirstOrDefault(p => p.Id == id);
         }
 
-        public void AddParking(Parking parking)
+        public Parking? GetParkingByPlate(string plate)
         {
-            _context.Parkings.Add(parking);
+            return _context.Parkings.Include(p => p.ParkingSpot).FirstOrDefault(p => p.LicensePlate == plate);
+        }
+
+        public int AddParking(Parking parking)
+        {
+            var newParking = _context.Parkings.Add(parking);
             _context.SaveChanges();
+            return newParking.Entity.Id;
         }
 
         public void UpdateParking(Parking parking)

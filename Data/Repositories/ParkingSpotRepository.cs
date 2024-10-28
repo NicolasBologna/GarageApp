@@ -18,14 +18,25 @@ namespace Data.Repositories
             return newParkingSpot.Entity.Id;
         }
 
-        public ParkingSpot? GetParkingSpot(string number)
+        public ParkingSpot? GetParkingSpotByDescription(string number)
         {
             return _context.ParkingSpots.SingleOrDefault(g => g.Description.ToLower() == number.ToLower());
         }
 
+        public ParkingSpot? GetParkingSpotById(int id)
+        {
+            return _context.ParkingSpots.SingleOrDefault(g => g.Id == id);
+        }
+
         public List<ParkingSpot> GetAll()
         {
-            return _context.ParkingSpots.ToList();
+            return _context.ParkingSpots.Where(p => p.Deleted == 0).ToList();
+        }
+
+        public void UpdateSpot(ParkingSpot spot)
+        {
+            _context.ParkingSpots.Update(spot);
+            _context.SaveChanges();
         }
     }
 }

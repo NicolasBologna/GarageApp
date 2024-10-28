@@ -21,5 +21,10 @@ namespace Data.Repositories
         {
             return _context.Users.FirstOrDefault(u => u.UserName == userName);
         }
+
+        public User? GetUserByUserId(int Id)
+        {
+            return _context.Users.FirstOrDefault(u => u.Id == Id);
+        }
     }
 }

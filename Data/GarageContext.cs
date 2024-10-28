@@ -110,8 +110,8 @@ namespace Data
             {
                 Id = 1,
                 LicensePlate = "ABC123",
-                EntryTime = "2023-10-01T08:00:00",
-                ExitTime = "2023-10-01T10:00:00",
+                EntryTime = new DateTime(2023, 10, 1, 8, 0, 0),
+                ExitTime = new DateTime(2023, 10, 1, 10, 0, 0),
                 Cost = 20.0,
                 EntryUserId = "1",
                 ExitUserId = "1",
@@ -123,8 +123,8 @@ namespace Data
             {
                 Id = 2,
                 LicensePlate = "DEF456",
-                EntryTime = "2023-10-01T09:00:00",
-                ExitTime = "2023-10-01T11:00:00",
+                EntryTime = new DateTime(2023, 10, 1, 9, 0, 0),
+                ExitTime = new DateTime(2023, 10, 1, 11, 0, 0),
                 Cost = 20.0,
                 EntryUserId = "1",
                 ExitUserId = "1",
@@ -136,7 +136,7 @@ namespace Data
             {
                 Id = 3,
                 LicensePlate = "GHY456",
-                EntryTime = "2024-10-01T09:00:00",
+                EntryTime = new DateTime(2024, 10, 1, 9, 0, 0),
                 EntryUserId = "1",
                 ParkingSpotId = 1,
                 IsDeleted = false
@@ -146,7 +146,7 @@ namespace Data
             {
                 Id = 4,
                 LicensePlate = "AGR405",
-                EntryTime = "2022-11-01T09:00:00",
+                EntryTime = new DateTime(2022, 11, 1, 9, 0, 0),
                 EntryUserId = "1",
                 ParkingSpotId = 2,
                 IsDeleted = false

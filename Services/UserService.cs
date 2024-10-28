@@ -37,5 +37,12 @@ namespace Services
 
             return userDetails;
         }
+
+        public bool UserExistsById(int id)
+        {
+            User? dbUser = _userRepository.GetUserByUserId(id);
+
+            return dbUser is not null;
+        }
     }
 }

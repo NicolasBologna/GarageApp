@@ -15,11 +15,11 @@ namespace Services
             _parkingSpotRepository = parkingSpotRepository;
             _parkingService = parkingService;
         }
-        public int Add(ENCreateParkingSpotDto dto)
+        public int Add(ESPCreateParkingSpotDto dto)
         {
             ParkingSpot newParkingSpot = new ParkingSpot()
             {
-                Description = dto.Description,
+                Description = dto.Descripcion,
                 Disabled = 0,
                 Deleted = 0,
             };
@@ -27,9 +27,14 @@ namespace Services
             return _parkingSpotRepository.Add(newParkingSpot);
         }
 
-        public ParkingSpot? GetParkingSpot(string number)
+        public ParkingSpot? GetParkingSpotByDescription(string number)
         {
-            return _parkingSpotRepository.GetParkingSpot(number);
+            return _parkingSpotRepository.GetParkingSpotByDescription(number);
+        }
+
+        public ParkingSpot? GetParkingSpotById(int id)
+        {
+            return _parkingSpotRepository.GetParkingSpotById(id);
         }
 
         public List<ESPParkingSpotForViewDto> GetAll()
@@ -43,6 +48,39 @@ namespace Services
                 Descripcion = g.Description,
                 Deshabilitada = g.Disabled,
             }).ToList();
+        }
+
+        public bool DeleteSpot(int spotId)
+        {
+            var spot = _parkingSpotRepository.GetParkingSpotById(spotId);
+            if (spot is null)
+                return false;
+
+            spot.Deleted = 1;
+            _parkingSpotRepository.UpdateSpot(spot);
+            return true;
+        }
+
+        public bool DisableSpot(int spotId)
+        {
+            var spot = _parkingSpotRepository.GetParkingSpotById(spotId);
+            if (spot is null)
+                return false;
+
+            spot.Disabled = 1;
+            _parkingSpotRepository.UpdateSpot(spot);
+            return true;
+        }
+
+        public bool EnableSpot(int spotId)
+        {
+            var spot = _parkingSpotRepository.GetParkingSpotById(spotId);
+            if (spot is null)
+                return false;
+
+            spot.Disabled = 0;
+            _parkingSpotRepository.UpdateSpot(spot);
+            return true;
         }
     }
 }

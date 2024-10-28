@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.DTOs.Spanish;
+using Microsoft.AspNetCore.Mvc;
 using Services;
 
 namespace GarageApp.Controllers
@@ -7,17 +8,34 @@ namespace GarageApp.Controllers
     [ApiController]
     public class ParkingController : ControllerBase
     {
-        private readonly IParkingService _ParkingService;
+        private readonly IParkingService _parkingService;
 
         public ParkingController(IParkingService parkingService)
         {
-            _ParkingService = parkingService;
+            _parkingService = parkingService;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_ParkingService.GetActives());
+            return Ok(_parkingService.GetActives());
+        }
+
+        [HttpPost]
+        [Route("abrir")]
+        public IActionResult Open([FromBody] ESPOpenParkingDto dto)
+        {
+            var newId = _parkingService.StartParking(dto);
+            return Ok(newId);
+        }
+
+        //hacer un endpoint para cerrar un estacionamiento
+        [HttpPost]
+        [Route("cerrar")]
+        public IActionResult Close([FromBody] ESPCloseParkingDto dto)
+        {
+            var newId = _parkingService.EndParking(dto);
+            return Ok(newId);
         }
     }
 }
