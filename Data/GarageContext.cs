@@ -116,7 +116,8 @@ namespace Data
                 EntryUserId = "1",
                 ExitUserId = "1",
                 ParkingSpotId = 1,
-                IsDeleted = false
+                IsDeleted = false,
+                RateId = 1
             };
 
             Parking parking2 = new Parking()
@@ -129,7 +130,8 @@ namespace Data
                 EntryUserId = "1",
                 ExitUserId = "1",
                 ParkingSpotId = 2,
-                IsDeleted = false
+                IsDeleted = false,
+                RateId = 1
             };
 
             Parking activeParking = new Parking()
@@ -139,7 +141,8 @@ namespace Data
                 EntryTime = new DateTime(2024, 10, 1, 9, 0, 0),
                 EntryUserId = "1",
                 ParkingSpotId = 1,
-                IsDeleted = false
+                IsDeleted = false,
+                RateId = 1
             };
 
             Parking activeParking2 = new Parking()
@@ -149,10 +152,13 @@ namespace Data
                 EntryTime = new DateTime(2022, 11, 1, 9, 0, 0),
                 EntryUserId = "1",
                 ParkingSpotId = 2,
-                IsDeleted = false
+                IsDeleted = false,
+                RateId = 2
             };
 
             modelBuilder.Entity<Parking>().HasData(parking1, parking2, activeParking, activeParking2);
+
+            //modelBuilder.Entity<Parking>().Property(p => p.RateId).HasDefaultValue(1); //seteamos que por defecto todos los ya creados sean autos.
 
 
             base.OnModelCreating(modelBuilder);

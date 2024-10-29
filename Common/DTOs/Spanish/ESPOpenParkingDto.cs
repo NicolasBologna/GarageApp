@@ -15,5 +15,7 @@ namespace Common.DTOs.Spanish
         public int IdUsuarioIngreso { get; set; }
         [Required]
         public int IdCochera { get; set; }
+        [Required]
+        public string TipoVehiculo { get; set; } = "Auto";
     }
 }

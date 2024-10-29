@@ -29,5 +29,10 @@ namespace Services
         {
             return _rateRepository.GetRateById(id);
         }
+
+        public Rate? GetRateByDescription(string description)
+        {
+            return _rateRepository.GetRateByDescription(description);
+        }
     }
 }

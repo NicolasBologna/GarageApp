@@ -34,7 +34,7 @@ namespace Data.Repositories
 
         public Parking? GetParkingByPlate(string plate)
         {
-            return _context.Parkings.Include(p => p.ParkingSpot).FirstOrDefault(p => p.LicensePlate == plate);
+            return _context.Parkings.Include(p => p.ParkingSpot).Include(p => p.Rate).FirstOrDefault(p => p.LicensePlate == plate);
         }
 
         public int AddParking(Parking parking)

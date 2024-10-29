@@ -10,12 +10,14 @@ namespace Services
         private readonly IParkingRepository _parkingRepository;
         private readonly IParkingSpotRepository _parkingSpotRepository;
         private readonly IUserService _userService;
+        private readonly IRateService _rateService;
 
-        public ParkingService(IParkingRepository parkingRepository, IParkingSpotRepository parkingSpotRepository, IUserService userService)
+        public ParkingService(IParkingRepository parkingRepository, IParkingSpotRepository parkingSpotRepository, IUserService userService, IRateService rateService)
         {
             _parkingRepository = parkingRepository;
             _parkingSpotRepository = parkingSpotRepository;
             _userService = userService;
+            _rateService = rateService;
         }
 
         public IEnumerable<ESPParkingDto> GetAll()
@@ -58,6 +60,10 @@ namespace Services
             if (!userExists)
                 throw new Exception("El usuario al que intenta asociar esta reserva no existe");
 
+            var rate = _rateService.GetRateByDescription(dto.TipoVehiculo);
+            if (rate is null)
+                throw new Exception("La tarifa al que intenta asociar esta reserva no existe");
+
             var newParking = new Parking()
             {
                 LicensePlate = dto.Patente,
@@ -65,6 +71,7 @@ namespace Services
                 IsDeleted = false,
                 EntryTime = DateTime.Now,
                 EntryUserId = dto.IdUsuarioIngreso.ToString(),
+                RateId = rate.Id
             };
             return _parkingRepository.AddParking(newParking);
 
@@ -80,8 +87,10 @@ namespace Services
             if (!userExists)
                 throw new Exception("El usuario al que intenta asociar esta reserva no existe");
 
+            double cost = parking.Rate.Value * (DateTime.Now - parking.EntryTime).TotalHours;
+
             parking.ExitTime = DateTime.Now;
-            parking.Cost = 600; //TODO: Calculate cost
+            parking.Cost = cost;
             parking.ExitUserId = dto.IdUsuarioEgreso.ToString();
 
             _parkingRepository.UpdateParking(parking);

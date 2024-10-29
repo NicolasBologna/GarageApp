@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Entities
 {
@@ -17,5 +18,9 @@ namespace Data.Entities
         [ForeignKey("ParkingSpot")]
         public int ParkingSpotId { get; set; }
         public bool? IsDeleted { get; set; }
+        public Rate Rate { get; set; }
+        [ForeignKey("Rate")]
+        [DefaultValue(1)]
+        public int RateId { get; set; }
     }
 }

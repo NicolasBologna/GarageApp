@@ -7,5 +7,6 @@ namespace Data.Repositories.Interfaces
         void AddRate(Rate rate);
         void UpdateRate(Rate rate);
         void DeleteRate(string id);
+        Rate? GetRateByDescription(string description);
     }
 }

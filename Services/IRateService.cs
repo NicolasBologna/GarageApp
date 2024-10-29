@@ -6,5 +6,6 @@ namespace Services
     {
         IEnumerable<ESPRateDto> GetAllRates();
         Rate GetRate(int id);
+        Rate? GetRateByDescription(string description);
     }
 }

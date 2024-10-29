@@ -21,6 +21,12 @@ namespace Data.Repositories
             return _context.Rates.Find(id);
         }
 
+        public Rate? GetRateByDescription(string description)
+        {
+            return _context.Rates.FirstOrDefault(r => r.Description == description);
+        }
+
+
         public void AddRate(Rate rate)
         {
             _context.Rates.Add(rate);
