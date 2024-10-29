@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(GarageContext))]
-    [Migration("20241029020239_add-default-rate")]
-    partial class adddefaultrate
+    [Migration("20241029023037_add-rateId")]
+    partial class addrateId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class adddefaultrate : Migration
+    public partial class addrateId : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

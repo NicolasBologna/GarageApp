@@ -17,8 +17,8 @@ namespace Data.Entities
         [ForeignKey("ParkingSpot")]
         public int ParkingSpotId { get; set; }
         public bool? IsDeleted { get; set; }
-        public Rate Rate { get; set; }
+        public Rate Rate { get; set; } //Tarifa aplicada a la estadía
         [ForeignKey("Rate")]
-        public int RateId { get; set; }
+        public int RateId { get; set; } //Id de la tarifa aplicada a la estadía
     }
 }
