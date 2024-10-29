@@ -1,10 +1,9 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Entities
 {
     //El equivalente a estacionamiento en el front, donde se registra cada vehículo que entra, permanece y sale del estacionamiento
-    public class Parking
+    public class Parking //= estacionamiento o estadía
     {
         public int Id { get; set; }
         public string LicensePlate { get; set; }
@@ -20,7 +19,6 @@ namespace Data.Entities
         public bool? IsDeleted { get; set; }
         public Rate Rate { get; set; }
         [ForeignKey("Rate")]
-        [DefaultValue(1)]
         public int RateId { get; set; }
     }
 }

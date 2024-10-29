@@ -158,7 +158,7 @@ namespace Data
 
             modelBuilder.Entity<Parking>().HasData(parking1, parking2, activeParking, activeParking2);
 
-            //modelBuilder.Entity<Parking>().Property(p => p.RateId).HasDefaultValue(1); //seteamos que por defecto todos los ya creados sean autos.
+            modelBuilder.Entity<Parking>().Property(p => p.RateId).HasDefaultValue(1); //seteamos que por defecto todos los ya creados sean autos.
 
 
             base.OnModelCreating(modelBuilder);
