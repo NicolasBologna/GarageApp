@@ -30,7 +30,7 @@ namespace GarageApp.Controllers
         }
 
         //hacer un endpoint para cerrar un estacionamiento
-        [HttpPost]
+        [HttpPatch]
         [Route("cerrar")]
         public IActionResult Close([FromBody] ESPCloseParkingDto dto)
         {
