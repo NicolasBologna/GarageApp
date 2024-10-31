@@ -1,4 +1,5 @@
 ﻿using Common.DTOs.Spanish;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -6,6 +7,7 @@ namespace GarageApp.Controllers
 {
     [Route("estacionamientos")]
     [ApiController]
+    [Authorize]
     public class ParkingController : ControllerBase
     {
         private readonly IParkingService _parkingService;
